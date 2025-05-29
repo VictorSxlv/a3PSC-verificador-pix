@@ -147,12 +147,14 @@ public class PixRiscoServico {
             String movimentacao = contaDestino.getPadraomovimentacoesultimomes();
 
             if (movimentacao != null) {
-                if (movimentacao.equals("APENAS_1_OU_2_ALTAS_IRREGULARES")) {
-                    score = score + 3;
-                } else if (movimentacao.equals("VOLUME_BAIXO_INCONSISTENTE")) {
-                    score = score + 2;
-                } else if (movimentacao.equals("VOLUME_MEDIO_RAZOAVEL")) {
-                    score = score + 1;
+                if (movimentacao.equals("ALTA_IRREGULAR")) {
+                    score += 3; // Adiciona 3 pontos
+                } else if (movimentacao.equals("ALTA_INCONSISTENTE")) {
+                    score += 3; // Adiciona 3 pontos
+                } else if (movimentacao.equals("BAIXA_IRREGULAR")) {
+                    score += 2; // Adiciona 2 pontos
+                } else if (movimentacao.equals("BAIXA_INCONSISTENTE")) {
+                    score += 1; // Adiciona 1 ponto
                 }
             }
 
@@ -237,7 +239,7 @@ public class PixRiscoServico {
 
 //Aplicação de máscara no CPF
     private String mascararCpf(String cpf) {
-       if (cpf != null && cpf.length() == 14 ) {
+       if (cpf != null && cpf.length() == 11 ) {
             return "***." + cpf.substring(3,6) + ".***-" + cpf.substring(9);
         }
         return "CPF Inválido";
