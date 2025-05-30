@@ -36,11 +36,6 @@ public class PixRiscoServico {
     @Autowired
     private DenunciaRepository denunciaRepository;
 
-    // Constantes para os níveis de risco
-    private static final String RISCO_BAIXO = "BAIXO";
-    private static final String RISCO_MEDIO = "MEDIO";
-    private static final String RISCO_ALTO = "ALTO";
-
     @Transactional(readOnly = true) // li no stack overflow que "readOnly" melhora a performance
     public VerificacaoResponse verificarRiscoChavePix(VerificacaoRequest request) {
         // Verifica se a chave existe e não está bloqueada

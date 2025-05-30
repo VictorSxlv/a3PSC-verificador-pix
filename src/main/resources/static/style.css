@@ -1,0 +1,265 @@
+body {
+    font-family: 'Roboto', Arial, sans-serif;
+    background-color: #f0f2f5; /* Um cinza suave para o fundo */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    color: #333;
+    line-height: 1.6;
+}
+
+.container-wrapper {
+    width: 100%;
+    max-width: 500px; /* Largura máxima do container */
+    padding: 20px;
+}
+
+.container {
+    background-color: #fff;
+    padding: 30px 40px;
+    border-radius: 12px; /* Bordas mais arredondadas */
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.logo {
+    max-width: 180px;
+    margin-bottom: 25px;
+}
+
+.tela {
+    display: none;
+}
+
+.tela.ativa {
+    display: block;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+h2 {
+    color: #CC092F; /* Vermelho Bradesco */
+    margin-bottom: 25px;
+    font-weight: 700;
+    font-size: 1.8em;
+}
+
+h2.sucesso {
+    color: #28a745; /* Verde para sucesso */
+}
+h2.atencao {
+    color: #ffc107; /* Amarelo/Laranja para atenção */
+}
+h2.bloqueio {
+    color: #CC092F; /* Vermelho Bradesco para bloqueio */
+}
+
+.icone-atencao, .icone-bloqueio {
+    margin-right: 8px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 500;
+    color: #555;
+    font-size: 0.95em;
+}
+
+.form-group input[type="text"],
+.form-group input[type="number"] {
+    width: 100%; /* Usa 100% do espaço do pai */
+    padding: 14px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 1em;
+    box-sizing: border-box; /* Importante para padding não aumentar o tamanho */
+    transition: border-color 0.3s ease;
+}
+
+.form-group input[type="text"]:focus,
+.form-group input[type="number"]:focus {
+    border-color: #CC092F;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(204, 9, 47, 0.2);
+}
+
+
+.form-group-checkbox {
+    margin: 25px 0;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+}
+
+.form-group-checkbox input[type="checkbox"] {
+    margin-right: 12px;
+    margin-top: 5px; /* Alinha melhor com o texto */
+    width: auto;
+    accent-color: #CC092F; /* Cor do checkbox marcado */
+}
+.form-group-checkbox label {
+    font-size: 0.9em;
+    color: #444;
+    line-height: 1.5;
+}
+
+.btn {
+    padding: 14px 22px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1em;
+    font-weight: 500;
+    cursor: pointer;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+    display: block; /* Faz o botão ocupar a largura toda */
+    width: 100%;
+    margin-bottom: 10px; /* Espaço entre botões */
+    box-sizing: border-box;
+}
+.btn:last-child {
+    margin-bottom: 0;
+}
+
+.btn:hover {
+    transform: translateY(-1px); /* Leve efeito ao passar o mouse */
+}
+.btn:active {
+    transform: translateY(0px);
+}
+
+
+.btn-principal {
+    background-color: #CC092F;
+    color: white;
+}
+.btn-principal:hover {
+    background-color: #a70727;
+}
+.btn-principal:disabled {
+    background-color: #e0e0e0;
+    color: #999;
+    cursor: not-allowed;
+    transform: none;
+}
+
+.btn-secundario {
+    background-color: #f0f2f5;
+    color: #CC092F;
+    border: 1px solid #CC092F;
+}
+.btn-secundario:hover {
+    background-color: #e6e8eb;
+}
+
+.btn-destacado-fechar { /* Estilo específico para o botão de fechar na tela de risco */
+    background-color: #fff;
+    color: #CC092F;
+    font-weight: 700;
+    border: 2px solid #CC092F;
+}
+.btn-destacado-fechar:hover {
+    background-color: #fdebeb;
+}
+
+
+.btn-link {
+    background: none;
+    color: #CC092F;
+    text-decoration: underline;
+    padding: 8px;
+    font-size: 0.9em;
+    font-weight: 500;
+    width: auto; /* Não ocupa largura total */
+    display: inline-block;
+    margin-top: 15px;
+}
+.btn-link:hover {
+    color: #a70727;
+    transform: none;
+}
+
+
+.mensagem-erro {
+    color: #CC092F;
+    font-size: 0.9em;
+    font-weight: 500;
+    margin-top: 15px;
+    min-height: 20px; /* Para não "pular" o layout */
+}
+
+.aviso-grande {
+    font-size: 1.1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #333;
+    font-weight: 500;
+}
+.aviso-info {
+    font-size: 1em;
+    line-height: 1.5;
+    margin-bottom: 15px;
+    color: #555;
+}
+.aviso-info strong {
+    color: #333;
+}
+
+
+.dados-revisao, .dados-comprovante {
+    text-align: left;
+    margin-bottom: 25px;
+    padding: 15px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+.dados-revisao p, .dados-comprovante p {
+    margin-bottom: 10px;
+    font-size: 0.95em;
+    color: #333;
+}
+.dados-revisao p strong, .dados-comprovante p strong {
+    color: #CC092F; /* Destaque para os labels */
+    min-width: 130px; /* Alinhamento dos valores */
+    display: inline-block;
+}
+.dados-revisao hr {
+    border: 0;
+    height: 1px;
+    background-color: #ddd;
+    margin: 15px 0;
+}
+.valor-destaque strong {
+    font-size: 1.1em;
+}
+.valor-destaque span {
+    font-size: 1.1em;
+    font-weight: 700;
+    color: #28a745; /* Verde para o valor */
+}
+.info-bloco {
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px dashed #eee;
+}
+.info-bloco:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+.botoes-acao {
+    margin-top: 30px;
+}

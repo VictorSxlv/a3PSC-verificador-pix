@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simulador PIX Bradesco</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+<div class="container-wrapper">
+    <div class="container">
+        <div id="tela1" class="tela ativa">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2>Transferência PIX</h2>
+            <div class="form-group">
+                <label for="chavePixInput">Chave PIX</label>
+                <input type="text" id="chavePixInput" name="chavePixInput" placeholder="CPF/CNPJ, Celular, Email ou Aleatória">
+            </div>
+            <div class="form-group">
+                <label for="valorInput">Valor da Transferência (R$)</label>
+                <input type="number" id="valorInput" name="valorInput" placeholder="0,00" step="0.01" min="0.01">
+            </div>
+            <button id="btnContinuarTela1" class="btn btn-principal">Continuar</button>
+            <p id="tela1-erro" class="mensagem-erro"></p>
+        </div>
+
+        <div id="tela2" class="tela">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2>Chave PIX Não Encontrada</h2>
+            <p id="tela2-mensagem" class="aviso-grande">A chave PIX informada não foi encontrada. Verifique os dados e tente novamente.</p>
+            <div class="botoes-acao">
+                <button id="btnVoltarTela2" class="btn btn-secundario">Digitar Novamente</button>
+                <button id="btnAjudaTela2" class="btn btn-link">Preciso de ajuda</button>
+            </div>
+        </div>
+
+        <div id="tela3" class="tela">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2>Chave PIX Bloqueada</h2>
+            <p id="tela3-mensagem-principal" class="aviso-grande"></p>
+            <p id="tela3-dataBloqueio" class="aviso-info"></p>
+            <div class="botoes-acao">
+                <button id="btnVoltarTela3" class="btn btn-secundario">Entendido</button>
+            </div>
+        </div>
+
+        <div id="tela4" class="tela">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2>Revise sua Transferência</h2>
+            <div class="dados-revisao">
+                <p><strong>Para:</strong> <span id="tela4-nome">N/A</span></p>
+                <p><strong>CPF/CNPJ:</strong> <span id="tela4-cpf">N/A</span></p>
+                <p><strong>Instituição:</strong> <span id="tela4-banco">N/A</span></p>
+                <p><strong>Chave PIX Destino:</strong> <span id="tela4-chave">N/A</span></p>
+                <p><strong>Tipo de Conta:</strong> <span id="tela4-tipoConta">N/A</span></p>
+                <hr>
+                <p class="valor-destaque"><strong>Valor da Transferência:</strong> R$ <span id="tela4-valor">0,00</span></p>
+                <p><strong>Data da Consulta:</strong> <span id="tela4-data">--/--/----</span></p>
+            </div>
+            <div class="botoes-acao">
+                <button id="btnFinalizarTela4" class="btn btn-principal">Confirmar Transferência</button>
+                <button id="btnVoltarTela4" class="btn btn-secundario">Cancelar</button>
+            </div>
+        </div>
+
+        <div id="tela5" class="tela">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2 class="sucesso">Transferência Realizada!</h2>
+            <div class="dados-comprovante">
+                <p>Sua transferência foi enviada com sucesso.</p>
+                <div class="info-bloco">
+                    <p><strong>Para:</strong> <span id="tela5-nome">N/A</span></p>
+                    <p><strong>CPF/CNPJ:</strong> <span id="tela5-cpf">N/A</span></p>
+                    <p><strong>Instituição:</strong> <span id="tela5-banco">N/A</span></p>
+                    <p><strong>Chave PIX:</strong> <span id="tela5-chavePix">N/A</span></p>
+                    <p><strong>Tipo de Conta:</strong> <span id="tela5-tipoConta">N/A</span></p>
+                </div>
+                <div class="info-bloco">
+                    <p><strong>Valor:</strong> R$ <span id="tela5-valor">0,00</span></p>
+                    <p><strong>Data e Hora:</strong> <span id="tela5-dataHora">--/--/---- --:--</span></p>
+                    <p><strong>ID da Transação (Simulado):</strong> <span id="tela5-id">BRADPIX-XXXX-YYYY-ZZZZ</span></p>
+                </div>
+            </div>
+            <div class="botoes-acao">
+                <button id="btnFecharTela5" class="btn btn-principal">Fazer Nova Transferência</button>
+            </div>
+        </div>
+
+        <div id="tela6" class="tela">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2 class="atencao"><span class="icone-atencao">⚠️</span> Atenção! Possível Risco!</h2>
+            <p class="aviso-grande">Identificamos um possível risco nesta transação. Suspeita de golpe ou fraude.</p>
+            <p class="aviso-info">Revise os dados com cuidado. <strong>Prossiga apenas se você conhece o destinatário e confia 100% na transação.</strong> O Bradesco não se responsabiliza por perdas caso você continue.</p>
+            <div class="form-group-checkbox">
+                <input type="checkbox" id="checkboxRisco" name="checkboxRisco">
+                <label for="checkboxRisco">Declaro que estou ciente dos riscos e desejo prosseguir com a transferência por minha conta e risco.</label>
+            </div>
+            <div class="botoes-acao">
+                <button id="btnFinalizarTela6" class="btn btn-principal" disabled>Confirmar Mesmo Assim</button>
+                <button id="btnFecharTela6" class="btn btn-secundario btn-destacado-fechar">Cancelar Transação</button>
+            </div>
+        </div>
+
+        <div id="tela7" class="tela">
+            <img src="logo-bradesco.png" alt="Logo Bradesco" class="logo">
+            <h2 class="bloqueio"><span class="icone-bloqueio">🚫</span> Transferência Bloqueada</h2>
+            <p id="tela7-motivo" class="aviso-grande">Por motivos de segurança, sua transferência não pôde ser concluída.</p>
+            <p id="tela7-denuncias" class="aviso-info"></p>
+            <p id="tela7-tempoBloqueio" class="aviso-info"></p>
+            <div class="botoes-acao">
+                <button id="btnFecharTela7" class="btn btn-principal">Entendido</button>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="script.js"></script>
+</body>
+</html>
