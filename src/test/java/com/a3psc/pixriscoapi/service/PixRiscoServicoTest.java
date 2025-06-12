@@ -54,7 +54,7 @@ class PixRiscoServicoTest {
     }
 
     @Test
-    @DisplayName("Deve retornar RISCO_ALTO quando o score for maior ou igual a 13")
+    @DisplayName("Deve retornar ALTO RISCO para chave com comportamento altamente suspeito")
     void TesteRiscoAltoChaveScoreElevado() {
         VerificacaoRequest request = new VerificacaoRequest();
         request.setChavePix("a1b2c3d4-e5f6-7777-8888-9999abcdeff0"); // Chave de risco alto (score)
@@ -82,7 +82,7 @@ class PixRiscoServicoTest {
     }
 
     @Test
-    @DisplayName("Deve retornar RISCO_ALTO para chave com denúncias de alta confiança")
+    @DisplayName("Deve retornar RISCO_ALTO para chave com denúncias de alta confiança (quando a qtd denúncias for menor que 2)")
     void TesteRiscoAltoChaveDenunciasConfiaveis() {
         VerificacaoRequest request = new VerificacaoRequest();
         request.setChavePix("beatriz.lima@email.com"); // Chave com 2 denúncias de confiança alta

@@ -176,7 +176,7 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('tela5-tipoConta').textContent = apiResponseData.tipoContaDestinatario || 'N/A';
             document.getElementById('tela5-valor').textContent = formatCurrency(apiResponseData.valorTransferencia);
             document.getElementById('tela5-dataHora').textContent = formatDateTime(apiResponseData.dataHoraConsulta);
-            document.getElementById('tela5-id').textContent = `BRADPIX-${Date.now().toString().slice(-4)}-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+            document.getElementById('tela5-id').textContent = `PIX-${Date.now().toString().slice(-4)}-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
             mostrarTela('tela5');
         } else if (nivelRisco === 'MEDIO' || nivelRisco === 'RISCO_MEDIO') {
             mostrarTela('tela6');
