@@ -13,8 +13,8 @@ import java.util.Map;
 @ControllerAdvice
 public class ExcecaoTratamento {
 
-    @ExceptionHandler(ExcecaoRegrasNegocio.class)
-    public ResponseEntity<Object> handleExcecaoRegrasNegocio(ExcecaoRegrasNegocio ex, HttpServletRequest request) {
+    @ExceptionHandler(ExcecaoBloqueado.class)
+    public ResponseEntity<Object> handleExcecaoRegrasNegocio(ExcecaoBloqueado ex, HttpServletRequest request) {
         Map<String, Object> body = new HashMap<>();
         body.put("timestamp", LocalDateTime.now());
         body.put("status", HttpStatus.CONFLICT.value());

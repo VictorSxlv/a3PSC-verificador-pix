@@ -1,6 +1,6 @@
 body {
     font-family: 'Roboto', Arial, sans-serif;
-    background-color: #f0f2f5; /* Um cinza suave para o fundo */
+    background-color: #f0f2f5;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -12,14 +12,14 @@ body {
 
 .container-wrapper {
     width: 100%;
-    max-width: 500px; /* Largura máxima do container */
+    max-width: 500px;
     padding: 20px;
 }
 
 .container {
     background-color: #fff;
     padding: 30px 40px;
-    border-radius: 12px; /* Bordas mais arredondadas */
+    border-radius: 12px;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
     text-align: center;
 }
@@ -44,20 +44,20 @@ body {
 }
 
 h2 {
-    color: #CC092F; /* Vermelho Bradesco */
+    color: #CC092F;
     margin-bottom: 25px;
     font-weight: 700;
     font-size: 1.8em;
 }
 
 h2.sucesso {
-    color: #28a745; /* Verde para sucesso */
+    color: #28a745;
 }
 h2.atencao {
-    color: #ffc107; /* Amarelo/Laranja para atenção */
+    color: #ffc107;
 }
 h2.bloqueio {
-    color: #CC092F; /* Vermelho Bradesco para bloqueio */
+    color: #CC092F;
 }
 
 .icone-atencao, .icone-bloqueio {
@@ -79,12 +79,12 @@ h2.bloqueio {
 
 .form-group input[type="text"],
 .form-group input[type="number"] {
-    width: 100%; /* Usa 100% do espaço do pai */
+    width: 100%;
     padding: 14px;
     border: 1px solid #ccc;
     border-radius: 6px;
     font-size: 1em;
-    box-sizing: border-box; /* Importante para padding não aumentar o tamanho */
+    box-sizing: border-box;
     transition: border-color 0.3s ease;
 }
 
@@ -105,9 +105,9 @@ h2.bloqueio {
 
 .form-group-checkbox input[type="checkbox"] {
     margin-right: 12px;
-    margin-top: 5px; /* Alinha melhor com o texto */
+    margin-top: 5px;
     width: auto;
-    accent-color: #CC092F; /* Cor do checkbox marcado */
+    accent-color: #CC092F;
 }
 .form-group-checkbox label {
     font-size: 0.9em;
@@ -123,9 +123,9 @@ h2.bloqueio {
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.2s ease, transform 0.1s ease;
-    display: block; /* Faz o botão ocupar a largura toda */
+    display: block;
     width: 100%;
-    margin-bottom: 10px; /* Espaço entre botões */
+    margin-bottom: 10px;
     box-sizing: border-box;
 }
 .btn:last-child {
@@ -133,7 +133,7 @@ h2.bloqueio {
 }
 
 .btn:hover {
-    transform: translateY(-1px); /* Leve efeito ao passar o mouse */
+    transform: translateY(-1px);
 }
 .btn:active {
     transform: translateY(0px);
@@ -163,7 +163,7 @@ h2.bloqueio {
     background-color: #e6e8eb;
 }
 
-.btn-destacado-fechar { /* Estilo específico para o botão de fechar na tela de risco */
+.btn-destacado-fechar {
     background-color: #fff;
     color: #CC092F;
     font-weight: 700;
@@ -181,7 +181,7 @@ h2.bloqueio {
     padding: 8px;
     font-size: 0.9em;
     font-weight: 500;
-    width: auto; /* Não ocupa largura total */
+    width: auto;
     display: inline-block;
     margin-top: 15px;
 }
@@ -196,7 +196,7 @@ h2.bloqueio {
     font-size: 0.9em;
     font-weight: 500;
     margin-top: 15px;
-    min-height: 20px; /* Para não "pular" o layout */
+    min-height: 20px;
 }
 
 .aviso-grande {
@@ -231,8 +231,8 @@ h2.bloqueio {
     color: #333;
 }
 .dados-revisao p strong, .dados-comprovante p strong {
-    color: #CC092F; /* Destaque para os labels */
-    min-width: 130px; /* Alinhamento dos valores */
+    color: #CC092F;
+    min-width: 130px;
     display: inline-block;
 }
 .dados-revisao hr {
@@ -247,7 +247,7 @@ h2.bloqueio {
 .valor-destaque span {
     font-size: 1.1em;
     font-weight: 700;
-    color: #28a745; /* Verde para o valor */
+    color: #28a745;
 }
 .info-bloco {
     margin-bottom: 15px;

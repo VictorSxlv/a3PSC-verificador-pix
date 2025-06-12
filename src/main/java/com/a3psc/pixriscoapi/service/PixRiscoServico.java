@@ -5,7 +5,7 @@ import com.a3psc.pixriscoapi.dto.VerificacaoRequest;
 import com.a3psc.pixriscoapi.dto.VerificacaoResponse;
 
 //Importando tratamento de excessões
-import com.a3psc.pixriscoapi.exception.ExcecaoRegrasNegocio;
+import com.a3psc.pixriscoapi.exception.ExcecaoBloqueado;
 import com.a3psc.pixriscoapi.exception.ExcecaoNaoEncontrado;
 
 //Importando todas as classes do model
@@ -44,7 +44,7 @@ public class PixRiscoServico {
         Conta conta  = chave.getConta();
 
         if (conta.getBloqueadaate() != null && conta.getBloqueadaate().isAfter(LocalDateTime.now())) {
-            throw new ExcecaoRegrasNegocio("Conta associada à chave PIX está temporariamente bloqueada para transações até " + conta.getBloqueadaate());
+            throw new ExcecaoBloqueado("Conta associada à chave PIX está temporariamente bloqueada para transações até " + conta.getBloqueadaate());
         }
 
         Conta contaDestino = chave.getConta();

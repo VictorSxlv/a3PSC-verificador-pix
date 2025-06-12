@@ -26,7 +26,6 @@ INSERT INTO Conta (ID, Tipo, Instituicao, Agencia, NumeroConta, DataCriacao, Usu
 INSERT INTO Conta (ID, Tipo, Instituicao, Agencia, NumeroConta, DataCriacao, UsuarioID, MediaTransacoesSemanais, PadraoMovimentacoesUltimoMes, bloqueadaate) VALUES
     (4, 'SALARIO', 'Banco Delta', '0004', '44444-4', '2022-06-01 10:00:00', 4, 15, 'MEDIO_RAZOAVEL', NULL);
 
--- Conta 5: CONTA COM CHAVE COM DENÚNCIAS CONFIÁVEIS
 -- A conta em si é normal, mas a chave associada tem 2 denúncias com alta confiança - ALTO RISCO (DENÚNCIAS)
 INSERT INTO Conta (ID, Tipo, Instituicao, Agencia, NumeroConta, DataCriacao, UsuarioID, MediaTransacoesSemanais, PadraoMovimentacoesUltimoMes, bloqueadaate) VALUES
     (5, 'CORRENTE', 'Banco Epsilon', '0005', '55555-5', '2023-01-01 10:00:00', 5, 10, 'MEDIO_RAZOAVEL', NULL);
@@ -35,6 +34,7 @@ INSERT INTO Conta (ID, Tipo, Instituicao, Agencia, NumeroConta, DataCriacao, Usu
 INSERT INTO Conta (ID, Tipo, Instituicao, Agencia, NumeroConta, DataCriacao, UsuarioID, MediaTransacoesSemanais, PadraoMovimentacoesUltimoMes, bloqueadaate) VALUES
     (6, 'POUPANCA', 'Banco Zeta', '0006', '66666-6', '2023-02-01 10:00:00', 6, 5, 'BAIXA_INCONSISTENTE', '2099-12-31 23:59:59');
 
+--Conta para teste de bloqueio
 INSERT INTO Conta (ID, Tipo, Instituicao, Agencia, NumeroConta, DataCriacao, UsuarioID, MediaTransacoesSemanais, PadraoMovimentacoesUltimoMes, bloqueadaate) VALUES
     (7, 'PAGAMENTO', 'Banco de Teste G', '0007', '77777-7', '2025-06-10 09:00:00', 7, 0, 'ALTA_IRREGULAR', NULL);
 

@@ -1,6 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // === IDs dos Elementos ===
-    // (Não há necessidade de listar todos aqui, já estão referenciados abaixo)
 
     const chavePixInput = document.getElementById('chavePixInput');
     const valorInput = document.getElementById('valorInput');
@@ -18,10 +16,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnFecharTela6 = document.getElementById('btnFecharTela6');
     const btnFecharTela7 = document.getElementById('btnFecharTela7');
 
-    const API_BASE_URL = ''; // Deixe vazio se for na mesma origem, ou ex: 'http://localhost:8080'
+    const API_BASE_URL = '';
     const API_ENDPOINT = `${API_BASE_URL}/api/verificadorpix/verificar-chavepix`;
 
-    let apiResponseData = null; // Armazena a resposta da API para uso posterior
+    let apiResponseData = null;
 
     // === Funções Utilitárias ===
     function mostrarTela(idTela) {
@@ -87,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
 
-    // === Lógica das Telas ===
 
     btnContinuarTela1.addEventListener('click', async () => {
         const chavePix = chavePixInput.value.trim();
@@ -155,7 +152,6 @@ document.addEventListener('DOMContentLoaded', () => {
     btnVoltarTela3.addEventListener('click', () => mostrarTela('tela1'));
     btnVoltarTela4.addEventListener('click', () => mostrarTela('tela1'));
 
-    // ### BLOCO CORRIGIDO ABAIXO ###
     btnFinalizarTela4.addEventListener('click', () => {
         if (!apiResponseData) {
             alert('Erro: Dados da API não encontrados. Por favor, inicie novamente.');
@@ -163,14 +159,11 @@ document.addEventListener('DOMContentLoaded', () => {
             return;
         }
 
-        // Linhas de debug (opcional, mas recomendado para verificar)
         console.log("Dados completos recebidos da API (Tela 4):", apiResponseData);
         const nivelRiscoRecebido = apiResponseData.nivelRisco;
         console.log("Valor exato de 'nivelRisco' recebido (Tela 4):", nivelRiscoRecebido);
         console.log("Tipo de 'nivelRisco':", typeof nivelRiscoRecebido);
 
-
-        // Normaliza para string e remove espaços extras, caso existam. Converte para maiúsculas para ser mais robusto.
         const nivelRisco = typeof nivelRiscoRecebido === 'string' ? nivelRiscoRecebido.trim().toUpperCase() : null;
         console.log("Nivel de Risco Normalizado para Comparação:", nivelRisco);
 
@@ -211,7 +204,7 @@ document.addEventListener('DOMContentLoaded', () => {
             mostrarTela('tela1');
         }
     });
-    // ### FIM DO BLOCO CORRIGIDO ###
+
 
     btnFecharTela5.addEventListener('click', () => mostrarTela('tela1'));
 
@@ -226,7 +219,7 @@ document.addEventListener('DOMContentLoaded', () => {
             alert("Você precisa confirmar que entende os riscos para prosseguir.");
             return;
         }
-        if (!apiResponseData) { // Verificação adicional
+        if (!apiResponseData) {
             alert('Erro: Dados da API não encontrados. Por favor, inicie novamente.');
             mostrarTela('tela1');
             return;
@@ -238,7 +231,7 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('tela5-tipoConta').textContent = apiResponseData.tipoContaDestinatario || 'N/A';
         document.getElementById('tela5-valor').textContent = formatCurrency(apiResponseData.valorTransferencia);
         document.getElementById('tela5-dataHora').textContent = formatDateTime(apiResponseData.dataHoraConsulta);
-        document.getElementById('tela5-id').textContent = `BRADPIX-${Date.now().toString().slice(-4)}-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
+        document.getElementById('tela5-id').textContent = `PIX-${Date.now().toString().slice(-4)}-${Math.random().toString(36).substring(2, 6).toUpperCase()}-${Math.random().toString(36).substring(2, 6).toUpperCase()}`;
         mostrarTela('tela5');
     });
 

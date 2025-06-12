@@ -10,14 +10,14 @@ import static org.junit.jupiter.api.Assertions.*;
 import com.a3psc.pixriscoapi.dto.VerificacaoRequest;
 import com.a3psc.pixriscoapi.dto.VerificacaoResponse;
 import com.a3psc.pixriscoapi.exception.ExcecaoNaoEncontrado;
-import com.a3psc.pixriscoapi.exception.ExcecaoRegrasNegocio;
+import com.a3psc.pixriscoapi.exception.ExcecaoBloqueado;
 import com.a3psc.pixriscoapi.repository.ContaRepository;
 import com.a3psc.pixriscoapi.model.Conta;
 
 import java.time.LocalDateTime;
 
 @SpringBootTest // Carrega o contexto completo da aplicação Spring para o teste
-@ActiveProfiles("test") // Ativa o application-test.properties, forçando o uso do H2
+@ActiveProfiles("test") // Ativa o application-test.properties
 class PixRiscoServicoTest {
 
     @Autowired
@@ -96,25 +96,13 @@ class PixRiscoServicoTest {
     }
 
     @Test
-    @DisplayName("Deve lançar ExcecaoNaoEncontrado para uma chave PIX que não existe")
-    void TesteExcecaoChaveInexistente() {
-        VerificacaoRequest request = new VerificacaoRequest();
-        request.setChavePix("chave.inexistente@dominio.com");
-        request.setValorTransferencia(100.0);
-
-        assertThrows(ExcecaoNaoEncontrado.class, () -> {
-            pixRiscoServico.verificarRiscoChavePix(request);
-        });
-    }
-
-    @Test
     @DisplayName("Deve lançar ExcecaoRegrasNegocio para uma conta que já está bloqueada")
     void TesteExcecaoContaJaBloqueada() {
         VerificacaoRequest request = new VerificacaoRequest();
         request.setChavePix("+5521977778888"); // Chave cuja conta está bloqueada no data.sql
         request.setValorTransferencia(100.0);
 
-        ExcecaoRegrasNegocio exception = assertThrows(ExcecaoRegrasNegocio.class, () -> {
+        ExcecaoBloqueado exception = assertThrows(ExcecaoBloqueado.class, () -> {
             pixRiscoServico.verificarRiscoChavePix(request);
         });
 
@@ -144,4 +132,18 @@ class PixRiscoServicoTest {
         assertNotNull(contaDepois.getBloqueadaate(), "A data de bloqueio não deveria ser nula após a operação.");
         assertTrue(contaDepois.getBloqueadaate().isAfter(LocalDateTime.now()), "A data de bloqueio deveria ser no futuro.");
     }
+
+    @Test
+    @DisplayName("Deve lançar ExcecaoNaoEncontrado para uma chave PIX que não existe")
+    void TesteExcecaoChaveInexistente() {
+        VerificacaoRequest request = new VerificacaoRequest();
+        request.setChavePix("chave.inexistente@dominio.com");
+        request.setValorTransferencia(100.0);
+
+        assertThrows(ExcecaoNaoEncontrado.class, () -> {
+            pixRiscoServico.verificarRiscoChavePix(request);
+        });
+    }
+
+
 }
