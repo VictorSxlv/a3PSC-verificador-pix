@@ -36,15 +36,15 @@ public class PixRiscoServico {
     @Autowired
     private DenunciaRepository denunciaRepository;
 
-    @Transactional(readOnly = true) // li no stack overflow que "readOnly" melhora a performance
+    @Transactional(readOnly = true)
     public VerificacaoResponse verificarRiscoChavePix(VerificacaoRequest request) {
         // Verifica se a chave existe e não está bloqueada
         Chave chave = chaveRepository.findBychavepix(request.getChavePix()).orElseThrow(() -> new ExcecaoNaoEncontrado("Chave PIX não encontrada:"));
 
-        Conta conta = chave.getConta();
+        Conta conta  = chave.getConta();
 
         if (conta.getBloqueadaate() != null && conta.getBloqueadaate().isAfter(LocalDateTime.now())) {
-            throw new ExcecaoRegrasNegocio("Chave PIX temporariamente bloqueada para transações até " + conta.getBloqueadaate());
+            throw new ExcecaoRegrasNegocio("Conta associada à chave PIX está temporariamente bloqueada para transações até " + conta.getBloqueadaate());
         }
 
         Conta contaDestino = chave.getConta();
@@ -74,7 +74,7 @@ public class PixRiscoServico {
             }
 
             double mediaConfianca = somaConfianca / quantidadeDenuncias;
-            if (mediaConfianca > 0.50) { // Confiança geral > 50%
+            if (mediaConfianca > 0.50) {
                 nivelRiscoFinal = "RISCO_ALTO";
                 altoRiscoPorDenuncia = true;
             }
@@ -186,18 +186,17 @@ public class PixRiscoServico {
             tempoBloqueioHoras = tempoBloqueioHoras + quantidadeDenuncias;
         }
 
-            // +1 hora para cada ponto acima do 6º ponto de score
-            if (score > 6) {
-                tempoBloqueioHoras += (score - 6);
-            }
+        // +1 hora para cada ponto acima do 6º ponto de score
+        if (score > 6) {
+            tempoBloqueioHoras += (score - 6);
+        }
 
-            // Limitando a 24 horas
-            if (tempoBloqueioHoras > 24) {
-                tempoBloqueioHoras = 24;
-            }
+        // Limitando a 24 horas
+        if (tempoBloqueioHoras > 24) {
+            tempoBloqueioHoras = 24;
+        }
 
-        // Fabricação da resposta JSON
-
+        // Atribuindo valor "oficial" das horas caso o risco for alto
         int horasBloqueio = 0;
         if (nivelRiscoFinal.equals("RISCO_ALTO")) {
             horasBloqueio = tempoBloqueioHoras;
